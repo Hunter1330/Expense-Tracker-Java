@@ -8,17 +8,24 @@ public class Expense {
 	private String description;
 	private double amount;
 
-	public Expense(int id, LocalDate date, String description, double amount) {
-		this.id = id;
+	public Expense(String description, double amount) {
+		this.id = ExpenseStorage.getNextId();
 		this.date = LocalDate.now();
 		this.description = description;
 		this.amount = amount;
 	}
-	
+
+	public Expense(int id, LocalDate date, String description, double amount) {
+		this.id = id;
+		this.date = date;
+		this.description = description;
+		this.amount = amount;
+	}
+
 	public String toCSV() {
 		return id + "," + date + "," + description + "," + amount;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
